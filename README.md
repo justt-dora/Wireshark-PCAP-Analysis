@@ -23,7 +23,7 @@ The `http.cap` packet capture was opened in Wireshark to examine the network tra
 The initial analysis showed different types of network communication, including TCP, UDP, DNS, and HTTP traffic. Display filters and Wireshark's Statistics tools were used to examine the packets and identify the communicating endpoints.
 
 This initial inspection provided a starting point for investigating the hosts, DNS resolution, HTTP requests, and TCP conversations in the capture.
-![Wireshark packet overview](screenshots/wireshark-overview.png)
+![Wireshark packet overview](wireshark-overview.png)
 
 ## Endpoint Analysis
 
@@ -39,7 +39,7 @@ Four IPv4 endpoints were observed:
 | 216.239.59.99 | 7 |
 
 The endpoint analysis helped identify the hosts involved in the captured communication. Further investigation of the packet details and conversations helped clarify the roles of these addresses.
-![IPv4 endpoints](screenshots/ipv4-endpoints.png)
+![IPv4 endpoints](ipv4-endpoints.png)
 
 ## Conversation Analysis
 
@@ -54,7 +54,7 @@ The IPv4 conversations showed traffic between:
 The TCP conversations included communication over port 80, commonly used by HTTP. A UDP conversation involving port 53 was also observed, which is commonly used for DNS queries.
 
 This analysis helped connect the IP addresses to the protocols used during communication.
-![Network conversations](screenshots/network-conversations.png)
+![Network conversations](network-conversations.png)
 
 ## DNS Investigation
 
@@ -65,8 +65,8 @@ The capture contained a DNS query for `pagead2.googlesyndication.com`. The respo
 The DNS server observed in the capture was `145.253.2.203`, while the querying client was `145.254.160.237`.
 
 This investigation demonstrated how DNS helps a client resolve a domain name to IP addresses before communicating with a server.
-![DNS query and response](screenshots/dns-query-response.png)
-![DNS CNAME resolution](screenshots/dns-cname-resolution.png)
+![DNS query and response](dns-query-response.png)
+![DNS CNAME resolution](dns-cname-resolution.png)
 
 ## HTTP Investigation
 
@@ -80,8 +80,8 @@ The analysis identified two HTTP GET requests:
 Both conversations contained an `HTTP/1.1 200 OK` response, indicating that the servers returned successful HTTP responses.
 
 The request headers also provided additional information, including the Host, User-Agent, and Referer fields. These details helped explain which resources the client requested and the webpage associated with the additional request.
-![HTTP GET request](screenshots/http-get-request.png)
-![HTTP response](screenshots/http-response.png)
+![HTTP GET request](http-get-request.png)
+![HTTP response](http-response.png)
 
 ## TCP Stream Analysis
 
@@ -92,8 +92,8 @@ The first stream examined contained the request for `/download.html`, followed b
 A second stream was examined to investigate the request for `/pagead/ads` associated with `pagead2.googlesyndication.com`. Its response also contained an `HTTP/1.1 200 OK` status.
 
 The display filter `tcp.stream eq 1` was then applied to isolate one TCP conversation, which displayed seven packets. This demonstrated how Wireshark can group packets belonging to the same TCP stream and help analysts inspect a conversation more clearly.
-![TCP stream analysis](screenshots/tcp-stream-analysis.png)
-![TCP stream filter](screenshots/tcp-stream-filter.png)
+![TCP stream analysis](tcp-stream-analysis.png)
+![TCP stream filter](tcp-stream-filter.png)
 
 ## Key Findings
 
